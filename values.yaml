@@ -1,5 +1,6 @@
 image:
   repository: bitnamilegacy/postgresql
+  tag: 14.2.0
 
 auth:
   username: user
