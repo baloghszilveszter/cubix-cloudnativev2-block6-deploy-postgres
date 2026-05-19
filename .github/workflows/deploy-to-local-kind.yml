@@ -5,15 +5,15 @@ on:
   workflow_dispatch: 
 
 jobs:
-  deploy-windows:
-    runs-on: [self-hosted, windows]
+  deploy-macos:
+    runs-on: [self-hosted, macOS, ARM64]
     steps:
       - uses: actions/checkout@v6
       - name: Helm deployment
         env:
           POSTGRESQL_PASSWORD: ${{ secrets.POSTGRESQL_PASSWORD }}
         run: |
-          helm upgrade postgresql bitnami/postgresql --version 14.2.3 -n cubix --set auth.password="$env:POSTGRESQL_PASSWORD" -f values.yaml --install
+          helm upgrade postgresql bitnami/postgresql --version 14.2.3 -n cubix --set auth.password="$POSTGRESQL_PASSWORD" -f values.yaml --install
 # Swap commenting if your self-hosted agent is on Linux or on MacOS
 #  deploy-linux:
 #    runs-on: [self-hosted, linux, macOS]
