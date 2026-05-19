@@ -13,7 +13,7 @@ jobs:
         env:
           POSTGRESQL_PASSWORD: ${{ secrets.POSTGRESQL_PASSWORD }}
         run: |
-          helm upgrade postgresql bitnami/postgresql --version 14.2.3 -n cubix --set auth.password="$POSTGRESQL_PASSWORD" -f values.yaml --install
+          helm upgrade postgresql bitnami/postgresql --version 14.2.3 -n cubix --create-namespace --set auth.password="$POSTGRESQL_PASSWORD" -f values.yaml --install
 # Swap commenting if your self-hosted agent is on Linux or on MacOS
 #  deploy-linux:
 #    runs-on: [self-hosted, linux, macOS]
@@ -23,4 +23,4 @@ jobs:
 #        env:
 #          POSTGRESQL_PASSWORD: ${{ secrets.POSTGRESQL_PASSWORD }}
 #        run: |
-#          helm upgrade postgresql bitnami/postgresql --version 14.2.3 -n cubix --set auth.password="$POSTGRESQL_PASSWORD" -f values.yaml --install
+#          helm upgrade postgresql bitnami/postgresql --version 14.2.3 -n cubix --create-namespace --set auth.password="$POSTGRESQL_PASSWORD" -f values.yaml --install
